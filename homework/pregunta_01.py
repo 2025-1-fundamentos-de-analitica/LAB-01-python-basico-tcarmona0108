@@ -7,17 +7,14 @@ utilizar pandas, numpy o scipy.
 
 
 def pregunta_01():
-    total = 0.0
-    ruta_archivo = "files\input\data.csv" 
-    separador='\t'
-    tiene_encabezado=False
-    with open(ruta_archivo, 'r', encoding='utf-8') as f:
-        if tiene_encabezado:
-            next(f)
-        for linea in f:
-            campos = linea.strip().split(separador)
-            total += int(campos[1])
-    return int(total)
+    with open('./files/input/data.csv', mode='r', encoding='utf-8') as f:
+        data = f.readlines() # Leer todas las lineas del archivo
+
+        # Iteramos las filas del archivo y sumamos la segunda columna
+
+        suma = sum([int(filas.split()[1]) for filas in data])
+
+        return suma
 
 
 
