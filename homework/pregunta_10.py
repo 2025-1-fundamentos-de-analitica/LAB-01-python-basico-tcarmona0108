@@ -20,3 +20,24 @@ def pregunta_10():
 
 
     """
+    with open("./files/input/data.csv", "r") as file:
+        data = file.readlines()
+
+    # Crear una lista para almacenar el resultado
+    result = []
+
+    # Procesar cada línea
+    for line in data:
+        # Separar las columnas
+        columns = line.strip().split("\t")
+        letter = columns[0]  # Columna 1 (letra)
+        col4_elements = len(columns[3].split(","))  # Cantidad de elementos en la columna 4
+        col5_elements = len(columns[4].split(","))  # Cantidad de elementos en la columna 5
+
+        # Añadir la tupla (letra, elementos en col 4, elementos en col 5) al resultado
+        result.append((letter, col4_elements, col5_elements))
+
+    return result
+
+# Llamar a la función y probar
+print(pregunta_10())
